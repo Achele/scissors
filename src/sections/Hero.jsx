@@ -1,13 +1,14 @@
-import { Curves, LineThrough } from "../components/Icon";
+import { Arrow, Curves, LineThrough } from "../components/Icon";
 import Navbar from "../components/Navbar";
+// import heroImage from "../assets/Hero section.png";
+import styles from "../styles/Hero.module.css";
 
 const Hero = () => {
   return (
-    <>
+    <main className={styles.heroBackground}>
       <Navbar />
       <section>
         <h1>
-          {" "}
           Optimize Your Online Experience with Our Advanced{" "}
           <span className="text-blue text-sky-500">URL Shortening</span>{" "}
           Solution
@@ -23,35 +24,28 @@ const Hero = () => {
         <div className="flex">
           <div className="relative">
             <Curves />
-            <LineThrough className="absolute left-6 top-4 2xl:left-6 " />
+            <LineThrough className="absolute left-6 top-4 2xl:left-6" />
           </div>
           <div className="relative">
             <Curves />
-            <LineThrough className="absolute left-6 top-4  2xl:left-6 " />
+            <LineThrough className="absolute left-6 top-4 2xl:left-6" />
           </div>
           <div className="relative">
             <Curves />
-            <LineThrough className="absolute left-6 top-4 2xl:left-6 " />
+            <LineThrough className="absolute left-6 top-4 2xl:left-6" />
+          </div>
+          <Arrow />
+          <div className="relative">
+            <Curves />
+            <LineThrough className="absolute left-6 top-4 2xl:left-6" />
           </div>
         </div>
-
-        {/* <div className="flex">
-          {" "}
-          <span className="">
-            <Curves className="relative" />
-            <LineThrough className="absolute left-6 top-28 2xl:left-6 xl:top-24" />
-          </span>
-          <span className="">
-            <Curves className="relative" />
-            <LineThrough className="absolute left-6 top-28 2xl:left-6 xl:top-24" />
-          </span>
-          <span className="">
-            <Curves className="relative" />
-            <LineThrough className="absolute left-6 top-28 2xl:left-6 xl:top-24" />
-          </span>
-        </div> */}
+        <p>
+          Seamlessly transform your long URLs into concise and shareable links
+          with just a few clicks.
+        </p>
       </section>
-    </>
+    </main>
   );
 };
 
