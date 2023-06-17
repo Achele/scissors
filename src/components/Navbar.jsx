@@ -3,7 +3,7 @@ import { ChainIcon, LineIcon, LogoIcon } from "./Icon";
 
 const Navbar = () => {
   return (
-    <nav className="flex py-1 bg-red-900 items-center justify-between">
+    <nav className="flex p-3 items-center justify-between">
       <div className="flex items-center">
         <ChainIcon />
         <LineIcon />
