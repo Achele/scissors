@@ -11,6 +11,8 @@ import linkIcon from "../assets/link-2.png";
 import edit from "../assets/edit.png";
 import activity from "../assets/activity.png";
 import checkCircle from "../assets/check-circle.png";
+import plusIcon from "../assets/plus.png";
+import minusIcon from "../assets/minus.png";
 
 const LogoIcon = (props) => <img src={logo} alt=" Scissors logo" {...props} />;
 
@@ -50,6 +52,14 @@ const CheckCircle = (props) => (
   <img src={checkCircle} alt=" Check Circle " {...props} />
 );
 
+const PlusIcon = (props) => (
+  <img src={plusIcon} alt=" Check Circle " {...props} />
+);
+
+const MinusIcon = (props) => (
+  <img src={minusIcon} alt=" Check Circle " {...props} />
+);
+
 export {
   LogoIcon,
   ChainIcon,
@@ -64,4 +74,6 @@ export {
   Edit,
   Activity,
   CheckCircle,
+  PlusIcon,
+  MinusIcon,
 };

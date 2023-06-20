@@ -1,4 +1,5 @@
 import "./App.css";
+import Faq from "./sections/Faq/Faq";
 import Features from "./sections/Features";
 
 import Hero from "./sections/Hero";
@@ -10,6 +11,7 @@ function App() {
       <Hero />
       <Features />
       <Prices />
+      <Faq />
     </>
   );
 }
