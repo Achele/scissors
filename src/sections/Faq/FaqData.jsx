@@ -12,6 +12,37 @@ const FaqData = () => {
         "Is it necessary to create an account to use the URL shortening service?",
       content: "COMING SOON",
     },
+    {
+      title: "Are the shortened links permanent? Will they expire?",
+      content: "COMING SOON",
+    },
+    {
+      title: "Are there any limitations on the number of URLs I can shorten?",
+      content: "COMING SOON",
+    },
+    {
+      title:
+        "Can I customize the shortened URLs to reflect my brand or content?",
+      content: "COMING SOON",
+    },
+    {
+      title: "Can I track the performance of my shortened URLs?",
+      content: "COMING SOON",
+    },
+    {
+      title:
+        "How secure is the URL shortening service? Are the shortened links protected against spam or malicious activity?",
+      content: "COMING SOON",
+    },
+    {
+      title:
+        "Is there an API available for integrating the URL shortening service into my own applications or websites?",
+      content: "COMING SOON",
+    },
+    {
+      title: "What is a QR code and what can it do?",
+      content: "COMING SOON",
+    },
   ];
   return (
     <div>
