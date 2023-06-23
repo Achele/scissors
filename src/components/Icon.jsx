@@ -13,6 +13,13 @@ import activity from "../assets/activity.png";
 import checkCircle from "../assets/check-circle.png";
 import plusIcon from "../assets/plus.png";
 import minusIcon from "../assets/minus.png";
+import facebook from "../assets/facebook.png";
+import twitter from "../assets/twitter.png";
+import linkedin from "../assets/linkedin.png";
+import instagram from "../assets/instagram.png";
+import iconLine from "../assets/line_b.png";
+import blackC from "../assets/chain_b.png";
+import scissor from "../assets/SCISSOR_b.png";
 
 const LogoIcon = (props) => <img src={logo} alt=" Scissors logo" {...props} />;
 
@@ -60,6 +67,32 @@ const MinusIcon = (props) => (
   <img src={minusIcon} alt=" Check Circle " {...props} />
 );
 
+const Facebook = (props) => (
+  <img src={facebook} alt=" Check Circle " {...props} />
+);
+
+const Twitter = (props) => (
+  <img src={twitter} alt=" Check Circle " {...props} />
+);
+
+const Instagram = (props) => (
+  <img src={instagram} alt=" Check Circle " {...props} />
+);
+
+const Linkedin = (props) => (
+  <img src={linkedin} alt=" Check Circle " {...props} />
+);
+
+const Scissor = (props) => (
+  <img src={scissor} alt=" Check Circle " {...props} />
+);
+
+const IconLine = (props) => (
+  <img src={iconLine} alt=" Check Circle " {...props} />
+);
+
+const BlackC = (props) => <img src={blackC} alt=" Check Circle " {...props} />;
+
 export {
   LogoIcon,
   ChainIcon,
@@ -76,4 +109,11 @@ export {
   CheckCircle,
   PlusIcon,
   MinusIcon,
+  Facebook,
+  Twitter,
+  Instagram,
+  Linkedin,
+  IconLine,
+  BlackC,
+  Scissor,
 };
