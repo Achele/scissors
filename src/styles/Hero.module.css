@@ -1,8 +1,6 @@
 .heroBackground {
   background-image: url("../assets/Hero section.png");
   background-size: cover;
-
-  /* Add additional background properties if needed */
 }
 
 .bckgroundGradient {
