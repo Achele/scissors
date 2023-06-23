@@ -1,27 +1,37 @@
-import { Arrow, Curves, LineThrough } from "../components/Icon";
+import { Link } from "react-router-dom";
+import { Arrow, Curves, LineThrough, Slash } from "../components/Icon";
 import Navbar from "../components/Navbar";
 // import heroImage from "../assets/Hero section.png";
 import styles from "../styles/Hero.module.css";
 
 const Hero = () => {
   return (
-    <main className={styles.heroBackground}>
+    <main className={`${styles.heroBackground} px-12 py-6 pb-16`}>
       <Navbar />
-      <section>
-        <h1>
+      <section className="my-4 mx-auto text-center">
+        <h1 className="text-3xl lg:text-4xl w-3/4 lg:w-2/3 my-8 mx-auto p-8 pb-12 relative">
           Optimize Your Online Experience with Our Advanced{" "}
-          <span className="text-blue text-sky-500">URL Shortening</span>{" "}
+          <span className="text-blue text-primary">URL Shortening</span>{" "}
           Solution
         </h1>
-        <p className="text-sm">
+        <Slash
+          className={
+            "absolute hidden md:block lg:block  md:top-46 md:left-1/2 lg:top-52 inset-x-40 left-2/4 "
+          }
+        />
+        <p className="text-sm  w-2/3 lg:w-2/4 my-0 mx-auto pb-8">
           Personalize your shortened URLs to align with your brand identity.
           Utilize custom slugs, branded links, and domain customization options
           to reinforce your brand presence and enhance user engagement.
         </p>
+        <button className="rounded-full bg-primary text-white py-2 px-8 text-xs mx-8">
+          Sign Up
+        </button>
+        <Link className="text-primary">Learn more</Link>
       </section>
 
-      <section>
-        <div className="flex">
+      <section className="my-10 mx-auto w-1/2 lg:w-1/3 border border-primary p-8 rounded-xl">
+        <div className="flex my-0 mx-auto p-5 ">
           <div className="relative">
             <Curves />
             <LineThrough className="absolute left-6 top-4 2xl:left-6" />
@@ -34,13 +44,13 @@ const Hero = () => {
             <Curves />
             <LineThrough className="absolute left-6 top-4 2xl:left-6" />
           </div>
-          <Arrow />
+          <Arrow className={" px-4"} />
           <div className="relative">
             <Curves />
             <LineThrough className="absolute left-6 top-4 2xl:left-6" />
           </div>
         </div>
-        <p>
+        <p className="text-xs px-4">
           Seamlessly transform your long URLs into concise and shareable links
           with just a few clicks.
         </p>
