@@ -1,4 +1,10 @@
 .heroBackground {
   background-image: url("../assets/Hero section.png");
+  background-size: cover;
+
   /* Add additional background properties if needed */
+}
+
+.bckgroundGradient {
+  background: linear-gradient(180deg, #1e3448 99.99%, rgba(30, 52, 72, 0) 100%);
 }
