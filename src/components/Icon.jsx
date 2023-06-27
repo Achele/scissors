@@ -24,6 +24,7 @@ import apple from "../assets/apple.png";
 import google from "../assets/logo_googleg_48dp.png";
 import password from "../assets/password.png";
 import loginLine from "../assets/loginLine.png";
+import analytics from "../assets/analytics.png";
 
 const LogoIcon = (props) => <img src={logo} alt=" Scissors logo" {...props} />;
 
@@ -109,6 +110,10 @@ const LoginLine = (props) => (
   <img src={loginLine} alt=" Check Circle " {...props} />
 );
 
+const Analytics = (props) => (
+  <img src={analytics} alt=" Check Circle " {...props} />
+);
+
 export {
   LogoIcon,
   ChainIcon,
@@ -136,4 +141,5 @@ export {
   Google,
   Password,
   LoginLine,
+  Analytics,
 };
