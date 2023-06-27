@@ -1,21 +1,15 @@
 import "./App.css";
-import Faq from "./sections/Faq/Faq";
-import Features from "./sections/Features";
-import Footer from "./sections/Footer";
-import GettingStarted from "./sections/GettingStarted";
-
-import Hero from "./sections/Hero";
-import Prices from "./sections/Prices";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Account from "./pages/Account";
 
 function App() {
   return (
     <div className="font-inter">
-      <Hero />
-      <Features />
-      <Prices />
-      <Faq />
-      <GettingStarted />
-      <Footer />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/account" element={<Account />} />
+      </Routes>
     </div>
   );
 }
