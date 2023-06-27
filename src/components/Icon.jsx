@@ -20,6 +20,10 @@ import instagram from "../assets/instagram.png";
 import iconLine from "../assets/line_b.png";
 import blackC from "../assets/chain_b.png";
 import scissor from "../assets/SCISSOR_b.png";
+import apple from "../assets/apple.png";
+import google from "../assets/logo_googleg_48dp.png";
+import password from "../assets/password.png";
+import loginLine from "../assets/loginLine.png";
 
 const LogoIcon = (props) => <img src={logo} alt=" Scissors logo" {...props} />;
 
@@ -93,6 +97,18 @@ const IconLine = (props) => (
 
 const BlackC = (props) => <img src={blackC} alt=" Check Circle " {...props} />;
 
+const Password = (props) => (
+  <img src={password} alt=" Check Circle " {...props} />
+);
+
+const Apple = (props) => <img src={apple} alt=" Check Circle " {...props} />;
+
+const Google = (props) => <img src={google} alt=" Check Circle " {...props} />;
+
+const LoginLine = (props) => (
+  <img src={loginLine} alt=" Check Circle " {...props} />
+);
+
 export {
   LogoIcon,
   ChainIcon,
@@ -116,4 +132,8 @@ export {
   IconLine,
   BlackC,
   Scissor,
+  Apple,
+  Google,
+  Password,
+  LoginLine,
 };
