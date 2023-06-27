@@ -10,8 +10,8 @@ export default {
         primary: "#0065FE",
         primaryBlue: "#F9FBFD",
         lightBlue: " #3284FF21",
-        blueGradient:
-          " linear-gradient(180deg, #1E3448 99.99%, rgba(30, 52, 72, 0) 100%)",
+        placeholder: "#A0B1C0",
+        anotherBlue: " #4991FF",
       },
     },
   },
