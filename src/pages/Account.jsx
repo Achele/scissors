@@ -1,7 +1,10 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import LinkCard from "../components/LinkCard";
 import UserNavbar from "../components/UserNavbar";
+import { data } from "../utils/data";
 
 const Account = () => {
+  const [links, setLinks] = useState(data);
   return (
     <>
       <UserNavbar />
@@ -13,23 +16,17 @@ const Account = () => {
           </button>
         </span>
         <section>
-          <article className="flex items-center justify-between">
-            <span>
-              <p>Created AT</p>
-              <h1 className="font-bold">My website</h1>
-              <Link>https....</Link>
-              <span className="flex items-center">
-                <p className="pr-5 text-primary">afshjkkk</p>
-                <button className="border-primary border text-primary rounded px-2">
-                  Copy
-                </button>
-              </span>
-            </span>
-            <span>
-              <h3 className="font-bold">14</h3>
-              <p>total clicks</p>
-            </span>
-          </article>
+          {links.map((link, index) => (
+            <LinkCard
+              key={link.id}
+              createdAt={link.createdAt}
+              name={link.name}
+              longURL={link.longURL}
+              shortCode={link.shortCode}
+              totalClicks={link.totalClicks}
+              isLastItem={index === links.length - 1}
+            />
+          ))}
         </section>
       </main>
     </>
