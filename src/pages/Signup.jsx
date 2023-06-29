@@ -1,16 +1,22 @@
 import { Form, Formik } from "formik";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import FormikControl from "../components/FormikControl";
 import { Apple, Google, LoginLine, Password } from "../components/Icon";
 import Footer from "../sections/Footer";
+import { UseUserAuth } from "../context/authContext";
+// import { UserAuth } from "../context/authContext";
+// import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const Signup = () => {
+  const { createUser } = UseUserAuth();
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
+
   const initialValues = {
     username: "",
     email: "",
@@ -37,9 +43,20 @@ const Signup = () => {
   });
 
   //   Form submission
-  const onSubmit = (values) => {
-    console.log("Form data", values);
+  const onSubmit = async (values) => {
+    const { email, password } = values;
+    try {
+      // console.log("Form data", values);
+      await createUser(email, password);
+      navigate("/login");
+    } catch (error) {
+      console.error("FIREBASE error", error.message);
+      // alert(error.response.data);
+    }
   };
+
+  // console.log(firebaseAuth, updateCurrentUser);
+
   return (
     <>
       <main className="p-9 w-1/2 my-0 mx-auto">
@@ -117,6 +134,7 @@ const Signup = () => {
                 </div>
 
                 <button
+                  type="submit"
                   disabled={!formik.isValid}
                   className="border bg-primary rounded-full py-1 px-4 w-full text-white my-4 cursor-pointer"
                 >
