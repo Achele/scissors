@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "../styles/Hero.module.css";
 
 const GettingStarted = () => {
@@ -8,9 +9,12 @@ const GettingStarted = () => {
       <h1 className="text-white font-semibold text-center py-4 text-4xl">
         Revolutionizing Link Optimization
       </h1>
-      <button className="rounded-full bg-primary py-1 text-white px-8 text-lg">
+      <Link
+        className="rounded-full bg-primary py-1 text-white px-8 text-lg"
+        to={"/signup"}
+      >
         Get Started
-      </button>
+      </Link>
     </section>
   );
 };
