@@ -1,16 +1,20 @@
 import { Form, Formik } from "formik";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import FormikControl from "../components/FormikControl";
 import { Apple, Google, LoginLine, Password } from "../components/Icon";
 import Footer from "../sections/Footer";
+import { UseUserAuth } from "../context/authContext";
+// import { async } from "@firebase/util";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
+  const { signIn } = UseUserAuth();
+  const navigate = useNavigate();
   const initialValues = {
     email: "",
     password: "",
@@ -31,9 +35,16 @@ const Login = () => {
   });
 
   //   Form submission
-  const onSubmit = (values) => {
-    console.log("Form data", values);
+  const onSubmit = async (values) => {
+    const { email, password } = values;
+    try {
+      await signIn(email, password);
+      navigate("/account");
+    } catch (error) {
+      console.error("FIREBASE error", error.message);
+    }
   };
+
   return (
     <>
       <main className="p-9 w-1/2 my-0 mx-auto">
@@ -105,7 +116,10 @@ const Login = () => {
         <span>
           <p className="text-center text-placeholder">
             Don't have an account?{" "}
-            <Link className="text-anotherBlue text-sm text-center">
+            <Link
+              className="text-anotherBlue text-sm text-center"
+              to={"/signup"}
+            >
               Sign up
             </Link>
           </p>
