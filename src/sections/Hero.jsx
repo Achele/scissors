@@ -24,9 +24,12 @@ const Hero = () => {
           Utilize custom slugs, branded links, and domain customization options
           to reinforce your brand presence and enhance user engagement.
         </p>
-        <button className="rounded-full bg-primary text-white py-2 px-8 text-xs mx-8">
+        <Link
+          className="rounded-full bg-primary text-white py-2 px-8 text-xs mx-8"
+          to={"/signup"}
+        >
           Sign Up
-        </button>
+        </Link>
         <Link className="text-primary">Learn more</Link>
       </section>
 
