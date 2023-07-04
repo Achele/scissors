@@ -33,57 +33,7 @@ const Account = () => {
     setShowPopup(false);
   };
 
-  // const createShortenLink = async (citeName, longURL) => {
-  //   const link = {
-  //     citeName: citeName,
-  //     longURL: longURL,
-  //     createdAt: Timestamp.fromDate(new Date()),
-  //     shortCode: nanoid(6),
-  //     totalClicks: 0,
-  //   };
-
-  //   const userRef = doc(db, "users", auth.currentUser.uid);
-  //   const userDoc = await getDoc(userRef);
-
-  //   if (userDoc.exists()) {
-  //     const userData = userDoc.data();
-  //     const existingLinks = Array.isArray(userData.links)
-  //       ? userData.links
-  //       : Object.values(userData.links || []);
-  //     console.log("EXISTING LINKS: ", existingLinks);
-  //     const updatedLinks = [...existingLinks, link];
-  //     console.log("UPDATED LINKS: ", updatedLinks);
-  //     await setDoc(userRef, { ...userData, links: updatedLinks });
-  //     // Update the links state with the new link
-  //     setLinks(updatedLinks);
-  //   } else {
-  //     await setDoc(userRef, { links: { link } });
-
-  //     // Update the links state with the new link
-  //     setLinks([link]);
-  //   }
-  //   setShowPopup(false);
-  // };
-
   useEffect(() => {
-    // const fetchLinks = async () => {
-    //   try {
-    //     const userRef = doc(db, "users", auth.currentUser.uid);
-    //     const userDoc = await getDoc(userRef);
-
-    //     if (userDoc.exists()) {
-    //       const userData = userDoc.data();
-    //       const existingLinks = Array.isArray(userData.links)
-    //         ? userData.links
-    //         : Object.values(userData.links || []);
-    //       console.log("FETCH", existingLinks);
-    //       setLinks(existingLinks);
-    //     }
-    //   } catch (error) {
-    //     console.log("Error fetching links:", error);
-    //   }
-    // };
-
     const fetchLinks = async () => {
       try {
         if (auth.currentUser) {
@@ -96,19 +46,6 @@ const Account = () => {
           console.log(tempLinks);
           setLinks(tempLinks);
         }
-        // const userLinksRef = collection(
-        //   db,
-        //   "users",
-        //   auth.currentUser.uid,
-        //   "links"
-        // );
-        // const linksSnapshot = await getDocs(userLinksRef);
-        // // const linksData = linksSnapshot.docs.map((doc) => doc.data());
-        // const linksData = linksSnapshot.docs.forEach((doc) =>
-        //   console.log(doc.data())
-        // );
-        // console.log("LINKS DATA: ", linksData);
-        // setLinks(linksData);
       } catch (error) {
         console.log("Error fetching links:", error);
       }
@@ -139,18 +76,7 @@ const Account = () => {
             .sort(
               (prevLink, nextLink) => nextLink.createdAt - prevLink.createdAt
             )
-            // .map((link, index) => (
-            //   <LinkCard
-            //     key={link.id}
-            //     id={link.id}
-            //     createdAt={link.createdAt}
-            //     citeName={link.citeName}
-            //     longURL={link.longURL}
-            //     shortCode={link.shortCode}
-            //     totalClicks={link.totalClicks}
-            //     isLastItem={index === links.length - 1}
-            //   />
-            // ))
+
             .map((link, index) => (
               <LinkCard
                 key={index}
