@@ -5,12 +5,20 @@ import UserNavbar from "../components/UserNavbar";
 import ShortenURLModal from "../components/ShortenURLModal";
 import { db, auth } from "../firebase/config";
 import { nanoid } from "nanoid";
-import { collection, addDoc, getDocs, Timestamp } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  getDocs,
+  Timestamp,
+  doc,
+  deleteDoc,
+} from "firebase/firestore";
 
 const Account = () => {
   const [links, setLinks] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
-  const userUid = auth.currentUser.uid;
+  const [isLoading, setIsLoading] = useState(true);
+  const userUid = auth.currentUser?.uid;
 
   const handleCreateLink = () => {
     setShowPopup(true);
@@ -40,7 +48,7 @@ const Account = () => {
           const userLinksRef = collection(db, "users", userUid, "links");
           const linksSnapshot = await getDocs(userLinksRef);
           const tempLinks = [];
-          linksSnapshot.docs.map((doc) =>
+          linksSnapshot.docs.forEach((doc) =>
             tempLinks.push({ ...doc.data(), id: doc.id })
           );
           console.log(tempLinks);
@@ -48,11 +56,34 @@ const Account = () => {
         }
       } catch (error) {
         console.log("Error fetching links:", error);
+      } finally {
+        setIsLoading(false); // Set isLoading to false
       }
     };
 
     fetchLinks();
-  }, []);
+  }, [userUid]);
+
+  // / const handleDelete = async (linkDocID) => {
+  //   const linkRef = doc(linksPathRef, linkDocID);
+  //   await deleteDoc(linkRef);
+  //   // await delete(linkRef);
+  //   setLinks((oldLinks) => oldLinks.filter((link) => link.id !== linkDocID));
+  // };
+
+  // const handleDelete = async (linkDocID) => {
+  //   await collection(db, "users", userUid, "links").doc(linkDocID).delete();
+  //   setLinks((oldLinks) => oldLinks.filter((link) => link.id !== linkDocID));
+  // };
+
+  const handleDelete = async (linkDocID) => {
+    try {
+      await deleteDoc(doc(db, "users", userUid, "links", linkDocID));
+      setLinks((oldLinks) => oldLinks.filter((link) => link.id !== linkDocID));
+    } catch (error) {
+      console.log("Error deleting document:", error);
+    }
+  };
 
   return (
     <div>
@@ -72,22 +103,26 @@ const Account = () => {
           </button>
         </span>
         <section>
-          {links
-            .sort(
-              (prevLink, nextLink) => nextLink.createdAt - prevLink.createdAt
-            )
-
-            .map((link, index) => (
-              <LinkCard
-                key={index}
-                createdAt={link.createdAt}
-                citeName={link.citeName}
-                longURL={link.longURL}
-                shortCode={link.shortCode}
-                totalClicks={link.totalClicks}
-                isLastItem={index === links.length - 1}
-              />
-            ))}
+          {isLoading ? (
+            <p>Loading...</p> // Render loading state
+          ) : (
+            links
+              .sort(
+                (prevLink, nextLink) => nextLink.createdAt - prevLink.createdAt
+              )
+              .map((link, index) => (
+                <LinkCard
+                  key={index}
+                  createdAt={link.createdAt}
+                  citeName={link.citeName}
+                  longURL={link.longURL}
+                  shortCode={link.shortCode}
+                  totalClicks={link.totalClicks}
+                  isLastItem={index === links.length - 1}
+                  deleteLink={() => handleDelete(link.id)}
+                />
+              ))
+          )}
         </section>
       </main>
       {showPopup && (
