@@ -13,12 +13,16 @@ import {
   doc,
   deleteDoc,
 } from "firebase/firestore";
+import { useCallback } from "react";
+import copy from "copy-to-clipboard";
 
 const Account = () => {
   const [links, setLinks] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const userUid = auth.currentUser?.uid;
+  const [isCopied, setIsCopied] = useState(false);
+
+  const userUid = auth?.currentUser?.uid;
 
   const handleCreateLink = () => {
     setShowPopup(true);
@@ -64,18 +68,6 @@ const Account = () => {
     fetchLinks();
   }, [userUid]);
 
-  // / const handleDelete = async (linkDocID) => {
-  //   const linkRef = doc(linksPathRef, linkDocID);
-  //   await deleteDoc(linkRef);
-  //   // await delete(linkRef);
-  //   setLinks((oldLinks) => oldLinks.filter((link) => link.id !== linkDocID));
-  // };
-
-  // const handleDelete = async (linkDocID) => {
-  //   await collection(db, "users", userUid, "links").doc(linkDocID).delete();
-  //   setLinks((oldLinks) => oldLinks.filter((link) => link.id !== linkDocID));
-  // };
-
   const handleDelete = async (linkDocID) => {
     try {
       await deleteDoc(doc(db, "users", userUid, "links", linkDocID));
@@ -84,6 +76,18 @@ const Account = () => {
       console.log("Error deleting document:", error);
     }
   };
+
+  const handleCopyClick = (shortUrl) => {
+    console.log("Link to copy:", shortUrl);
+    const isCopied = copy(shortUrl);
+    console.log("Link copied:", isCopied);
+    setIsCopied(isCopied);
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 2000);
+  };
+
+  // const dummyFunction = useCallback(() => console.log("dummy function"), []);
 
   return (
     <div>
@@ -119,11 +123,19 @@ const Account = () => {
                   shortCode={link.shortCode}
                   totalClicks={link.totalClicks}
                   isLastItem={index === links.length - 1}
+                  // dummyFunction={dummyFunction}
                   deleteLink={() => handleDelete(link.id)}
+                  copyLink={handleCopyClick}
+                  shortUrl={`${window.location.host}/${link.shortCode}`}
                 />
               ))
           )}
         </section>
+        {isCopied && (
+          <p className="bg-black border rounded text-white py-1 px-4 w-1/2">
+            Link copied to clipboard
+          </p>
+        )}
       </main>
       {showPopup && (
         <ShortenURLModal
