@@ -15,6 +15,7 @@ import {
 } from "firebase/firestore";
 import { useCallback } from "react";
 import copy from "copy-to-clipboard";
+import Loading from "../components/Loader";
 
 const Account = () => {
   const [links, setLinks] = useState([]);
@@ -31,7 +32,10 @@ const Account = () => {
   const createShortenLink = async (citeName, longURL) => {
     const link = {
       citeName: citeName,
-      longURL: longURL,
+      longURL:
+        longURL.includes("http://") || longURL.includes("https://")
+          ? longURL
+          : `http://${longURL}`,
       createdAt: Timestamp.fromDate(new Date()),
       shortCode: nanoid(6),
       totalClicks: 0,
@@ -108,7 +112,7 @@ const Account = () => {
         </span>
         <section>
           {isLoading ? (
-            <p>Loading...</p> // Render loading state
+            <Loading /> // Render loading state
           ) : (
             links
               .sort(
