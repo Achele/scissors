@@ -24,7 +24,7 @@ const UserNavbar = () => {
         </NavLink>
       </div>
       <div>
-        <h1>{user.displayName}</h1>
+        {/* <h1>{user.displayName}</h1> */}
         <button
           className={"text-primary text-base pr-1"}
           onClick={handleLogout}
