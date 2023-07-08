@@ -2,6 +2,7 @@ import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 import FormikControl from "../components/FormikControl";
+import styles from "../styles/Hero.module.css";
 
 const TrimUrl = () => {
   const dropDownOptions = [
@@ -30,8 +31,8 @@ const TrimUrl = () => {
   };
 
   return (
-    <section>
-      <div>
+    <section className={`${styles.bckgroundGradient} border py-16  `}>
+      <div className="bg-white w-4/5 sm:w-2/5  my-0 mx-auto py-7 px-10 border rounded">
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
@@ -39,26 +40,31 @@ const TrimUrl = () => {
         >
           {(formik) => {
             return (
-              <Form>
+              <Form className=" my-0 mx-auto">
                 <FormikControl
                   control="input"
                   placeholder="Paste URL here..."
                   name="url"
                 />
-                <span>
-                  <FormikControl
-                    control="select"
-                    name="selectDomain"
-                    options={dropDownOptions}
-                  />
-                  <FormikControl
-                    control="input"
-                    placeholder="Type alias here"
-                    name="alias"
-                  />
+                <span className="flex items-center justify-between">
+                  <span>
+                    <FormikControl
+                      control="select"
+                      name="selectDomain"
+                      options={dropDownOptions}
+                    />
+                  </span>
+
+                  <span className="mx-4">
+                    <FormikControl
+                      control="input"
+                      placeholder="Type alias here"
+                      name="alias"
+                    />
+                  </span>
                 </span>
                 <button
-                  className="bg-primary border rounded py-2 px-4 text-white"
+                  className="bg-primary border rounded-full py-2 px-4 text-white w-full my-4"
                   disabled={!formik.values}
                 >
                   Trim URL
@@ -67,7 +73,7 @@ const TrimUrl = () => {
             );
           }}
         </Formik>
-        <p className="text-primary">
+        <p className="text-primary text-xs">
           By clicking TrimURL, I agree to the Terms of Service, Privacy Policy
           and Use of Cookies.
         </p>
