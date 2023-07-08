@@ -18,8 +18,8 @@ const Prices = () => {
           can be rest assured we have you in mind in our pricing.
         </p>
       </article>
-      <section className="flex items-center justify-center">
-        <div className=" border border-lightBlue rounded-2xl py-2 px-8">
+      <section className="sm:flex items-center justify-center">
+        <div className=" border border-lightBlue rounded-2xl py-2 px-8 mb-4">
           <p>Basic</p>
           <h2 className="font-bold py-2">Free</h2>
           <p>Free plan for all users</p>
@@ -46,7 +46,7 @@ const Prices = () => {
         </div>
 
         <div
-          className={`${styles.bckgroundGradient} border py-16 px-6 text-white rounded-2xl`}
+          className={`${styles.bckgroundGradient} border py-16 px-6 text-white rounded-2xl  mb-4`}
         >
           <p>Professional</p>
           <h2 className="font-bold py-2 text-lg">$15/month</h2>
