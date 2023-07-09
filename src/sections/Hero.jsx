@@ -33,24 +33,24 @@ const Hero = () => {
         <Link className="text-primary">Learn more</Link>
       </section>
 
-      <section className="my-10 mx-auto w-1/2 lg:w-1/3 border border-primary p-8 rounded-xl">
+      <section className="my-10 mx-auto sm:w-1/2 lg:w-1/3 border border-primary p-8 rounded-xl">
         <div className="flex my-0 mx-auto p-5 ">
           <div className="relative">
             <Curves />
-            <LineThrough className="absolute left-6 top-4 2xl:left-6" />
+            <LineThrough className="xs:hidden md:block md:absolute md:left-6 md:top-4 2xl:left-6" />
           </div>
           <div className="relative">
             <Curves />
-            <LineThrough className="absolute left-6 top-4 2xl:left-6" />
+            <LineThrough className="xs:hidden md:block md:absolute md:left-6 md:top-4 2xl:left-6" />
           </div>
           <div className="relative">
             <Curves />
-            <LineThrough className="absolute left-6 top-4 2xl:left-6" />
+            <LineThrough className="xs:hidden md:block md:absolute md:left-6 md:top-4 2xl:left-6" />
           </div>
           <Arrow className={" px-4"} />
           <div className="relative">
             <Curves />
-            <LineThrough className="absolute left-6 top-4 2xl:left-6" />
+            <LineThrough className="xs:hidden md:block md:absolute md:left-6 md:top-4 2xl:left-6" />
           </div>
         </div>
         <p className="text-xs px-4">
