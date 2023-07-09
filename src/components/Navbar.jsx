@@ -1,26 +1,40 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { ChainIcon, LineIcon, LogoIcon, MobileIcon } from "./Icon";
+import { ChainIcon, LineIcon, LogoIcon } from "./Icon";
 import "../styles/nav.css";
+import { useEffect } from "react";
 
 const Navbar = () => {
   const [display, setDisplay] = useState(false);
 
   const handleDisplay = () => {
-    if (display === false) {
-      setDisplay(true);
-    } else {
-      setDisplay(false);
-    }
+    setDisplay(!display);
   };
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      if (window.innerWidth <= 640) {
+        setDisplay(false);
+      } else {
+        setDisplay(true);
+      }
+    };
+
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
+
   return (
     <header className="flex p-3 items-center justify-between">
       <div className="flex items-center ">
         <ChainIcon className={"w-5 "} />
         <LineIcon className={"h-5 px-2"} />
-        <LogoIcon className={"w-12"} />
+        <LogoIcon className={"w-14"} />
       </div>
-      <nav className="links" data-visible={display}>
+
+      <nav className={`links ${display ? "visible" : "hidden"} `}>
         <div className="nav1">
           <NavLink
             to={"/urls"}
@@ -30,27 +44,27 @@ const Navbar = () => {
             My URLs
           </NavLink>
           <NavLink
-            to={"/features"}
+            to={"features"}
             className={"px-4"}
             onClick={() => setDisplay(false)}
           >
             Features
           </NavLink>
           <NavLink
-            to={"/pricing"}
+            to={"pricing"}
             className={""}
             onClick={() => setDisplay(false)}
           >
             Pricing
           </NavLink>
           <NavLink
-            to={"/analytics"}
+            to={"analytics"}
             className={"px-4"}
             onClick={() => setDisplay(false)}
           >
             Analytics
           </NavLink>
-          <NavLink to={"/faqs"} onClick={() => setDisplay(false)}>
+          <NavLink to={"faqs"} onClick={() => setDisplay(false)}>
             FAQs
           </NavLink>
         </div>
@@ -76,7 +90,6 @@ const Navbar = () => {
         onClick={handleDisplay}
         aria-expanded={display}
       ></button>
-      {/* <MobileIcon onClick={handleDisplay} aria-expanded={display} /> */}
     </header>
   );
 };
