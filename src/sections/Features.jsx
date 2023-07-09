@@ -20,16 +20,16 @@ const Features = () => {
             <h2 className="font-semibold">60M</h2>
             <p className="text-xs">Links & QR codes created</p>
           </span>
-          <span className="w-28">
+          <span className="hidden sm:block w-28">
             <h2 className="font-semibold">1B</h2>
             <p className="text-xs">Clicked & Scanned connections</p>
           </span>
-          <span>
+          <span className="hidden sm:block">
             <h2 className="font-semibold">300K</h2>
             <p className="text-xs">App Integrations</p>
           </span>
         </div>
-        <section className="grid grid-cols-2 gap-8 w-3/4 my-20 mx-auto">
+        <section className="sm:grid grid-cols-2 gap-8 w-3/4 my-20 mx-auto">
           <article className="px-10">
             <span className="flex items-center font-bold">
               <Line className={"h-6"} />
