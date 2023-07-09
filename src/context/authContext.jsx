@@ -4,6 +4,8 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
 import { auth } from "../firebase/config";
 import { useContext } from "react";
@@ -13,14 +15,18 @@ import { useState } from "react";
 const UserContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
-  const [user, setUser] = useState({});
-  const createUser = async (email, password, displayName) => {
+  const [user, setUser] = useState({
+    useruid: "",
+    email: "",
+    displayName: "",
+  });
+  console.log("USER:", user);
+  const createUser = async (email, password) => {
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
-        password,
-        displayName
+        password
       );
       return userCredential.user;
     } catch (error) {
@@ -46,8 +52,15 @@ export const AuthContextProvider = ({ children }) => {
     };
   }, []);
 
+  const googleSignIn = () => {
+    const googleAuthProvider = new GoogleAuthProvider();
+    return signInWithPopup(auth, googleAuthProvider);
+  };
+
   return (
-    <UserContext.Provider value={{ createUser, user, logout, signIn }}>
+    <UserContext.Provider
+      value={{ createUser, user, logout, signIn, googleSignIn }}
+    >
       {children}
     </UserContext.Provider>
   );
