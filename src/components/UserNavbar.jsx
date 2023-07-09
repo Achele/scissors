@@ -17,16 +17,16 @@ const UserNavbar = () => {
   };
 
   return (
-    <nav className="flex p-3 items-center justify-between">
+    <nav className="flex p-4 items-center justify-between bg-darkBlue">
       <div>
-        <NavLink to={"/urls"} className={"text-primary px-1"}>
+        <NavLink to={"/urls"} className={"text-navText px-4"}>
           My URLs
         </NavLink>
       </div>
       <div>
-        {/* <h1>{user.displayName}</h1> */}
+        <h1 className="text-navText">{user.displayName}</h1>
         <button
-          className={"text-primary text-base pr-1"}
+          className={"text-navText  text-base pr-4"}
           onClick={handleLogout}
         >
           Log out
