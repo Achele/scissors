@@ -13,7 +13,7 @@ const Login = () => {
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
-  const { signIn } = UseUserAuth();
+  const { signIn, googleSignIn } = UseUserAuth();
   const navigate = useNavigate();
   const initialValues = {
     email: "",
@@ -45,13 +45,25 @@ const Login = () => {
     }
   };
 
+  const handleGoogleSignIn = async () => {
+    try {
+      await googleSignIn();
+      navigate("/account");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <>
       <main className="p-9 w-1/2 my-0 mx-auto">
         <section className="py-8">
           <p className="text-center py-3">Log in with</p>
           <span className="flex items-center justify-center">
-            <button className="bg-primary py-1 px-4 flex items-center text-white text-base rounded mx-3">
+            <button
+              className="bg-primary py-1 px-4 flex items-center text-white text-base rounded mx-3"
+              onClick={handleGoogleSignIn}
+            >
               <Google className={"w-4 mr-1"} />
               Google
             </button>
@@ -104,6 +116,7 @@ const Login = () => {
                   </Link>
                 </div>
                 <button
+                  type="submit"
                   disabled={!formik.isValid}
                   className="border bg-primary rounded-full py-1 px-4 w-full text-white my-4 cursor-pointer"
                 >
