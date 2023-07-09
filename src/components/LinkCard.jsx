@@ -28,12 +28,14 @@ const LinkCard = ({
         isLastItem ? "" : "border-b-2 border-placeholder"
       }`}
     >
-      <span>
+      <span className="w-1/2 ">
         <p className="text-placeholder uppercase py-2 font-bold">
           Created at {formattedDate}
         </p>
         <h1 className="font-bold text-base py-2">{citeName}</h1>
-        <Link>{longURL}</Link>
+        <Link href={longURL} className={"overflow-hidden text-ellipsis"}>
+          {longURL}
+        </Link>
         <span className="flex items-center py-6">
           <p className="pr-5 text-primary">{shortUrl}</p>
           <button
