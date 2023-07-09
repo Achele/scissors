@@ -16,6 +16,8 @@ import {
 import { useCallback } from "react";
 import copy from "copy-to-clipboard";
 import Loading from "../components/Loader";
+import { NoLinks } from "../components/Icon";
+import { UseUserAuth } from "../context/authContext";
 
 const Account = () => {
   const [links, setLinks] = useState([]);
@@ -24,6 +26,8 @@ const Account = () => {
   const [isCopied, setIsCopied] = useState(false);
 
   const userUid = auth?.currentUser?.uid;
+  const { user } = UseUserAuth();
+  console.log("ACCOUNT: ", user);
 
   const handleCreateLink = () => {
     setShowPopup(true);
@@ -74,8 +78,12 @@ const Account = () => {
 
   const handleDelete = async (linkDocID) => {
     try {
-      await deleteDoc(doc(db, "users", userUid, "links", linkDocID));
-      setLinks((oldLinks) => oldLinks.filter((link) => link.id !== linkDocID));
+      if (window.confirm("Do you want to delete the link")) {
+        await deleteDoc(doc(db, "users", userUid, "links", linkDocID));
+        setLinks((oldLinks) =>
+          oldLinks.filter((link) => link.id !== linkDocID)
+        );
+      }
     } catch (error) {
       console.log("Error deleting document:", error);
     }
@@ -113,6 +121,11 @@ const Account = () => {
         <section>
           {isLoading ? (
             <Loading /> // Render loading state
+          ) : !links.length ? (
+            <span className="text-center py-4">
+              <NoLinks className={"w-1/3 my-7 mx-auto"} />
+              <p>Let's make magic!!</p>
+            </span>
           ) : (
             links
               .sort(
