@@ -3,21 +3,39 @@ import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { CloseIcon } from "./Icon";
 import FormikControl from "./FormikControl";
+import Loading from "./Loader";
 
 const ShortenURLModal = ({ setShowPopup, createShortenLink }) => {
+  const [loading, setLoading] = useState(false);
   const initialValues = {
     citeName: "",
     longURL: "",
   };
 
   const validationSchema = Yup.object({
-    citeName: Yup.string().required("Required"),
-    longURL: Yup.string().required("Required"),
+    citeName: Yup.string()
+      .required("Required")
+      .min(3, "Name must be at least 3 characters long")
+      .max(15, "Limit exceeded!! maximum 15 char long"),
+    longURL: Yup.string()
+      .required("Required")
+      .matches(
+        /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi,
+        "Please type in a valid URL"
+      ),
   });
 
-  const onSubmit = (values) => {
+  const onSubmit = async (values) => {
     setShowPopup(false);
-    createShortenLink(values.citeName, values.longURL);
+    setLoading(true);
+    try {
+      setTimeout(
+        () => createShortenLink(values.citeName, values.longURL),
+        1000
+      );
+    } catch (error) {
+      setLoading(false);
+    }
   };
 
   return (
@@ -53,7 +71,7 @@ const ShortenURLModal = ({ setShowPopup, createShortenLink }) => {
                 disabled={!formik.isValid}
                 className="bg-primary text-white px-4 rounded py-1 my-3 ml-40 text-sm"
               >
-                Shorten URL
+                {loading ? <Loading /> : " Shorten URL"}
               </button>
             </Form>
           )}
