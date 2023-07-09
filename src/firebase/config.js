@@ -1,7 +1,10 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-// import "firebase/firestore"
-import { getFirestore } from "firebase/firestore";
+import {
+  getAuth,
+  GoogleAuthProvider,
+  connectAuthEmulator,
+} from "firebase/auth";
+import { getFirestore, connectFirestoreEmulator } from "firebase/firestore";
 // import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
@@ -14,13 +17,19 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
-// const firestore = firebase.firestore()
-export const firestore = getFirestore(app);
+export const googleProvider = new GoogleAuthProvider();
+export const db = getFirestore(app);
 // const firebaseStorage = getStorage();
-firestore.useEmulator("localhost", 8080);
-auth.useEmulator("http://localhost:9099");
+
+// if (import.meta.env.MODE === "development") {
+//   connectFirestoreEmulator(db, "localhost", 8080);
+//   connectAuthEmulator(auth, "http://localhost:9099");
+// }
+// console.log("PROCESS", import.meta.env.MODE);
+
+// app.firebaseDB.FieldValue.serverTimestamp
 
 export default app;
 
