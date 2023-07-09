@@ -25,6 +25,10 @@ import google from "../assets/logo_googleg_48dp.png";
 import password from "../assets/password.png";
 import loginLine from "../assets/loginLine.png";
 import analytics from "../assets/analytics.png";
+import closeIcon from "../assets/close.svg";
+import loader from "../assets/loader.png";
+import noData from "../assets/noData.svg";
+import mobileIcon from "../assets/mobile-icon.svg";
 
 const LogoIcon = (props) => <img src={logo} alt=" Scissors logo" {...props} />;
 
@@ -114,6 +118,18 @@ const Analytics = (props) => (
   <img src={analytics} alt=" Check Circle " {...props} />
 );
 
+const CloseIcon = (props) => (
+  <img src={closeIcon} alt="Close Icon" {...props} />
+);
+
+const Loader = (props) => <img src={loader} alt="Close Icon" {...props} />;
+
+const NoLinks = (props) => <img src={noData} alt=" Scissors logo" {...props} />;
+
+const MobileIcon = (props) => (
+  <img src={mobileIcon} alt=" Scissors logo" {...props} />
+);
+
 export {
   LogoIcon,
   ChainIcon,
@@ -142,4 +158,8 @@ export {
   Password,
   LoginLine,
   Analytics,
+  CloseIcon,
+  Loader,
+  NoLinks,
+  MobileIcon,
 };
