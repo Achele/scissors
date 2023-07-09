@@ -10,15 +10,16 @@ import { UseUserAuth } from "../context/authContext";
 // import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const Signup = () => {
-  const { createUser } = UseUserAuth();
+  const { createUser, googleSignIn } = UseUserAuth();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
   };
 
   const initialValues = {
-    username: "",
+    displayName: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -26,7 +27,7 @@ const Signup = () => {
 
   // validation
   const validationSchema = Yup.object({
-    username: Yup.string().required("Required"),
+    displayName: Yup.string().required("Required"),
     email: Yup.string()
       .email("Please enter a valid email address")
       .required("Required"),
@@ -55,6 +56,15 @@ const Signup = () => {
     }
   };
 
+  const handleGoogleSignIn = async () => {
+    try {
+      await googleSignIn();
+      navigate("/login");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   // console.log(firebaseAuth, updateCurrentUser);
 
   return (
@@ -64,7 +74,7 @@ const Signup = () => {
           <p className="text-center py-3">Log in with</p>
           <span className="flex items-center justify-center">
             <button className="bg-primary py-1 px-4 flex items-center text-white text-base rounded mx-3">
-              <Google className={"w-4 mr-1"} />
+              <Google className={"w-4 mr-1"} onClick={handleGoogleSignIn} />
               Google
             </button>
             <button className="bg-primary py-1 px-4 flex items-center text-white text-base rounded">
@@ -91,7 +101,7 @@ const Signup = () => {
                   control="input"
                   type="text"
                   placeholder="Username"
-                  name="username"
+                  name="displayName"
                 />
 
                 <FormikControl
