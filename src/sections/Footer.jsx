@@ -10,14 +10,14 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="sm:flex">
+    <footer className="sm:flex  justify-between p-8">
       <div>
         <span className="flex items-center">
           <BlackC />
           <IconLine />
           <Scissor className={""} />
         </span>
-        <span className="flex items-center">
+        <span className="flex items-center py-4 gap-4">
           <Twitter />
           <Instagram />
           <Linkedin />
