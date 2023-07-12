@@ -28,7 +28,7 @@ const LinkCard = ({
         isLastItem ? "" : "border-b-2 border-placeholder"
       }`}
     >
-      <span className="w-1/2 ">
+      <span className=" ">
         <p className="text-placeholder uppercase py-2 font-bold">
           Created at {formattedDate}
         </p>
@@ -36,21 +36,23 @@ const LinkCard = ({
         <Link href={longURL} className={"overflow-hidden text-ellipsis"}>
           {longURL}
         </Link>
-        <span className="flex items-center py-6">
-          <p className="pr-5 text-primary">{shortUrl}</p>
-          <button
-            className="border-primary border text-primary rounded px-2 py-1"
-            onClick={() => copyLink(shortUrl)}
-          >
-            Copy
-          </button>
+        <span className="sm:flex items-center  py-6">
+          <p className="pr-5 text-primary xs:pt-3">{shortUrl}</p>
+          <span className="flex xs:my-2">
+            <button
+              className="border-primary border text-primary rounded px-2 py-1"
+              onClick={() => copyLink(shortUrl)}
+            >
+              Copy
+            </button>
 
-          <button
-            className="text-white rounded py-1 px-2 bg-gray-950 border mx-2"
-            onClick={deleteLink}
-          >
-            Delete
-          </button>
+            <button
+              className="text-white rounded py-1 px-2 bg-gray-950 border mx-2"
+              onClick={deleteLink}
+            >
+              Delete
+            </button>
+          </span>
         </span>
       </span>
       <span>
@@ -58,7 +60,7 @@ const LinkCard = ({
           <h3 className="font-bold">{totalClicks}</h3>
           <Analytics />
         </span>
-        <p>total clicks</p>
+        <p className="xs:hidden">total clicks</p>
       </span>
     </article>
   );
