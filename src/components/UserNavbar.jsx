@@ -17,12 +17,13 @@ const UserNavbar = () => {
   };
 
   return (
-    <nav className="flex p-4 items-center justify-between bg-darkBlue">
-      <div>
-        <NavLink to={"/urls"} className={"text-navText px-4"}>
-          My URLs
-        </NavLink>
-      </div>
+    <header className="flex p-4 items-center justify-between bg-darkBlue">
+      {/* <nav> */}
+      {/* <div> */}
+      <NavLink to={"/urls"} className={"text-navText px-4"}>
+        My URLs
+      </NavLink>
+      {/* </div> */}
       <div>
         <h1 className="text-navText">{user.displayName}</h1>
         <button
@@ -32,7 +33,8 @@ const UserNavbar = () => {
           Log out
         </button>
       </div>
-    </nav>
+      {/* </nav> */}
+    </header>
   );
 };
 
