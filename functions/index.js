@@ -40,7 +40,7 @@ exports.linkCreated = functions.firestore
 
 exports.linkDeleted = functions.firestore
   .document("users/{userUid}/links/{linkID}")
-  .onDelete((snapshot, context) => {
+  .onDelete((snapshot) => {
     const { shortCode } = snapshot.data();
 
     return admin.firestore().doc(`links/${shortCode}`).delete();
