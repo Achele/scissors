@@ -6,7 +6,6 @@ import FormikControl from "../components/FormikControl";
 import { Apple, Google, LoginLine, Password } from "../components/Icon";
 import Footer from "../sections/Footer";
 import { UseUserAuth } from "../context/authContext";
-// import { async } from "@firebase/util";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -41,7 +40,7 @@ const Login = () => {
       await signIn(email, password);
       navigate("/account");
     } catch (error) {
-      console.error("FIREBASE error", error.message);
+      console.error("FIREBASE error", error);
     }
   };
 
@@ -56,7 +55,7 @@ const Login = () => {
 
   return (
     <>
-      <main className="p-9 w-1/2 my-0 mx-auto">
+      <main className="xs:w-full p-9 sm:w-3/4 lg:w-1/2 my-0 mx-auto">
         <section className="py-8">
           <p className="text-center py-3">Log in with</p>
           <span className="flex items-center justify-center">
@@ -74,9 +73,9 @@ const Login = () => {
           </span>
         </section>
         <div className="flex items-center justify-center ">
-          <LoginLine className={"hidden"} />
+          <LoginLine className={"xs:w-1/3"} />
           <p className="px-3 text-lg">or</p>
-          <LoginLine className={"hidden"} />
+          <LoginLine className={"xs:w-1/3"} />
         </div>
 
         <Formik
