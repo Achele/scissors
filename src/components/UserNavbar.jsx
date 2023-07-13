@@ -1,6 +1,5 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { UseUserAuth } from "../context/authContext";
-// import { ChainIcon, LineIcon, LogoIcon } from "./Icon";
 
 const UserNavbar = () => {
   const { user, logout } = UseUserAuth();
@@ -18,14 +17,12 @@ const UserNavbar = () => {
 
   return (
     <header className="flex p-4 items-center justify-between bg-darkBlue">
-      {/* <nav> */}
-      {/* <div> */}
       <NavLink to={"/urls"} className={"text-navText px-4"}>
         My URLs
       </NavLink>
-      {/* </div> */}
-      <div>
-        <h1 className="text-navText">{user.displayName}</h1>
+
+      <div className="flex items-center">
+        <h1 className="text-navText px-3">{user.displayName}</h1>
         <button
           className={"text-navText  text-base pr-4"}
           onClick={handleLogout}
@@ -33,7 +30,6 @@ const UserNavbar = () => {
           Log out
         </button>
       </div>
-      {/* </nav> */}
     </header>
   );
 };
