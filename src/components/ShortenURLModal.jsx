@@ -42,7 +42,7 @@ const ShortenURLModal = ({ setShowPopup, createShortenLink }) => {
     <>
       <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-auto sm:w-1/2 lg:max-w-2xl bg-white p-8 rounded-md shadow-md z-50">
         <span className="flex items-center justify-between">
-          <h2 className="text-xl font-bold mb-4 pl-14 lg:pl-24">Shorten URL</h2>
+          <h2 className="text-xl font-bold mb-4 pl-14 lg:pl-24">Trim URL</h2>
           <CloseIcon onClick={() => setShowPopup(false)} />
         </span>
 
@@ -69,9 +69,9 @@ const ShortenURLModal = ({ setShowPopup, createShortenLink }) => {
               <button
                 type="submit"
                 disabled={!formik.isValid}
-                className="bg-primary text-white px-4 rounded py-1 my-3 ml-40 text-sm"
+                className="bg-primary text-white px-4 rounded py-2 my-4  text-sm  w-full"
               >
-                {loading ? <Loading /> : " Shorten URL"}
+                {loading ? <Loading /> : " Trim URL"}
               </button>
             </Form>
           )}
