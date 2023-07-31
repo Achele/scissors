@@ -12,6 +12,7 @@ const LinkRedirect = () => {
 
   useEffect(() => {
     const fetchLinkDoc = async () => {
+      if (shortCode.length !== 6) return setLoading(false);
       const linkRef = doc(db, "links", shortCode);
       const linkDoc = await getDoc(linkRef);
 
