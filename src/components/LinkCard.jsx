@@ -20,6 +20,7 @@ const LinkCard = ({
     createdAt && createdAt.seconds
       ? format(new Date(createdAt.seconds * 1000), "MMM dd, yyyy")
       : "-";
+
   const shortUrl = `${window.location.host}/${shortCode}`;
 
   return (
@@ -37,7 +38,10 @@ const LinkCard = ({
           {longURL}
         </Link>
         <span className="sm:flex items-center  py-6">
-          <p className="pr-5 text-primary xs:pt-3">{shortUrl}</p>
+          <Link href={shortUrl} className="pr-5 text-primary xs:pt-3">
+            shortly.xyz/{shortCode}
+          </Link>
+          {/* <p className="pr-5 text-primary xs:pt-3">{shortUrl}</p> */}
           <span className="flex xs:my-2">
             <button
               className="border-primary border text-primary rounded px-2 py-1"
