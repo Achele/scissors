@@ -11,7 +11,12 @@ const Modal = ({ setShowPopup, createShortenLink }) => {
 
   const validationSchema = Yup.object({
     name: Yup.string().required("Required"),
-    longURL: Yup.string().required("Required"),
+    longURL: Yup.string()
+      .matches(
+        /^(ht|f)tp(s?):\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*((0-9)*)*(\/?)([a-zA-Z0-9\-.?,'/\\+&=%$#_]*)?$/,
+        "Enter a valid url"
+      )
+      .required("Required"),
   });
 
   const onSubmit = (values) => {
