@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
 import { ChainIcon, LineIcon, LogoIcon } from "./Icon";
 import "../styles/nav.css";
 import { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [display, setDisplay] = useState(false);
