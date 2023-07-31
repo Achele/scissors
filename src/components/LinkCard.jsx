@@ -39,10 +39,10 @@ const LinkCard = ({
         </Link>
         <span className="sm:flex items-center  py-6">
           <Link href={shortUrl} className="pr-5 text-primary xs:pt-3">
-            shortly.xyz/{shortCode}
+            shortly.web/{shortCode}
           </Link>
-          {/* <p className="pr-5 text-primary xs:pt-3">{shortUrl}</p> */}
-          <span className="flex xs:my-2">
+
+          <span className="flex  xs:my-2">
             <button
               className="border-primary border text-primary rounded px-2 py-1"
               onClick={() => copyLink(shortUrl)}
@@ -64,7 +64,7 @@ const LinkCard = ({
           <h3 className="font-bold">{totalClicks}</h3>
           <Analytics />
         </span>
-        <p className="xs:hidden">total clicks</p>
+        <p className="xs:hidden sm:hidden lg:block">total clicks</p>
       </span>
     </article>
   );
