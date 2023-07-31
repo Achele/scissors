@@ -3,7 +3,7 @@ import { Activity, Edit, Grid, Line, LinkIcon } from "../components/Icon";
 const Features = () => {
   return (
     <>
-      <section>
+      <section id="features">
         <div className="flex items-center justify-between bg-primaryBlue  py-7 px-10">
           <span className="text-2xl font-bold">
             <h1>One Stop.</h1>
