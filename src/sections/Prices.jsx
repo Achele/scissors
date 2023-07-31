@@ -3,7 +3,7 @@ import styles from "../styles/Hero.module.css";
 
 const Prices = () => {
   return (
-    <section className="my-8 mx-auto w-3/4">
+    <section className="my-8 mx-auto w-3/4" id="prices">
       <article className="flex flex-col justify-center p-6">
         <span className="flex items-center justify-center">
           <Line className={"h-8"} />
