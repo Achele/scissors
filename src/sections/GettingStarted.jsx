@@ -5,6 +5,7 @@ const GettingStarted = () => {
   return (
     <section
       className={`${styles.bckgroundGradient} flex flex-col justify-center items-center p-8 my-8`}
+      id="gettingStarted"
     >
       <h1 className="text-white font-semibold text-center py-4 text-4xl">
         Revolutionizing Link Optimization
