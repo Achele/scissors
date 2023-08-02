@@ -6,7 +6,7 @@ import styles from "../styles/Hero.module.css";
 
 const Hero = () => {
   return (
-    <main className={`${styles.heroBackground} px-12 py-6 pb-16`}>
+    <main className={`${styles.heroBackground} px-12 py-6 pb-16`} id="hero">
       <Navbar />
       <section className="my-4 mx-auto text-center">
         <h1 className="text-3xl lg:text-4xl w-3/4 lg:w-2/3 my-8 mx-auto p-8 pb-12 relative">
