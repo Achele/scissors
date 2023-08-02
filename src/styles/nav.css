@@ -1,6 +1,6 @@
 nav {
   /* display: flex; */
-  position: fixed;
+  position: absolute;
   max-width: 200px;
   margin: auto;
   top: 6em;
