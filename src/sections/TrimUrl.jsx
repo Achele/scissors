@@ -31,7 +31,10 @@ const TrimUrl = () => {
   };
 
   return (
-    <section className={`${styles.bckgroundGradient} border py-16  `}>
+    <section
+      className={`${styles.bckgroundGradient} border py-16  `}
+      id="trimUrl"
+    >
       <div className="bg-white w-4/5 sm:w-2/5  my-0 mx-auto py-7 px-10 border rounded">
         <Formik
           initialValues={initialValues}
