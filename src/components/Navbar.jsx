@@ -3,6 +3,8 @@ import { ChainIcon, LineIcon, LogoIcon } from "./Icon";
 import "../styles/nav.css";
 import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { scroller } from "react-scroll";
 
 const Navbar = () => {
   const [display, setDisplay] = useState(false);
@@ -35,28 +37,39 @@ const Navbar = () => {
       </div>
 
       <nav className={`links ${display ? "visible" : "hidden"} `}>
-        <div className="nav1">
-          <NavLink
-            to={"/urls"}
-            className={"text-primary px-1"}
-            onClick={() => setDisplay(false)}
+        <ul className="nav1">
+          <li
+            onClick={() => {
+              setDisplay((display) => !display);
+              scroller.scrollTo("trimUrl", { smooth: true, offset: -80 });
+            }}
           >
-            My URLs
-          </NavLink>
-          <NavLink
-            to={"features"}
-            className={"px-4"}
-            onClick={() => setDisplay(false)}
+            <Link to="/" className={"text-primary px-1"}>
+              {" "}
+              My URLs
+            </Link>
+          </li>
+
+          <li
+            onClick={() => {
+              setDisplay((display) => !display);
+              scroller.scrollTo("features", { smooth: true, offset: -80 });
+            }}
           >
-            Features
-          </NavLink>
-          <NavLink
-            to={"pricing"}
-            className={""}
-            onClick={() => setDisplay(false)}
+            <Link to="/" className={"px-4"}>
+              Features
+            </Link>
+          </li>
+
+          <li
+            onClick={() => {
+              setDisplay((display) => !display);
+              scroller.scrollTo("prices", { smooth: true, offset: -80 });
+            }}
           >
-            Pricing
-          </NavLink>
+            <Link to="/">Pricing</Link>
+          </li>
+
           <NavLink
             to={"analytics"}
             className={"px-4"}
@@ -64,25 +77,30 @@ const Navbar = () => {
           >
             Analytics
           </NavLink>
-          <NavLink to={"faqs"} onClick={() => setDisplay(false)}>
-            FAQs
-          </NavLink>
-        </div>
-        <div className="login">
+          <li
+            onClick={() => {
+              setDisplay((display) => !display);
+              scroller.scrollTo("faqs", { smooth: true, offset: -80 });
+            }}
+          >
+            <Link to="/">FAQs</Link>
+          </li>
+        </ul>
+        <ul className="login">
           <NavLink
             to={"/login"}
             className={"text-primary text-base pr-1"}
-            onClick={() => setDisplay(false)}
+            onClick={() => setDisplay((display) => !display)}
           >
             Log in
           </NavLink>
           <button
             className="rounded-full bg-primary text-white py-2 px-4 text-xs ml-2"
-            onClick={() => setDisplay(false)}
+            onClick={() => setDisplay((display) => !display)}
           >
             Try for free
           </button>
-        </div>
+        </ul>
       </nav>
 
       <button
