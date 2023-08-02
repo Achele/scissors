@@ -29,6 +29,8 @@ import closeIcon from "../assets/close.svg";
 import loader from "../assets/loader.png";
 import noData from "../assets/noData.svg";
 import mobileIcon from "../assets/mobile-icon.svg";
+import blueIcon from "../assets/Group 3.png";
+import secondBlue from "../assets/Group 2.png";
 
 const LogoIcon = (props) => <img src={logo} alt=" Scissors logo" {...props} />;
 
@@ -130,6 +132,14 @@ const MobileIcon = (props) => (
   <img src={mobileIcon} alt=" Scissors logo" {...props} />
 );
 
+const BlueIcon = (props) => (
+  <img src={blueIcon} alt=" Scissors logo" {...props} />
+);
+
+const SecondBlue = (props) => (
+  <img src={secondBlue} alt=" Scissors logo" {...props} />
+);
+
 export {
   LogoIcon,
   ChainIcon,
@@ -162,4 +172,6 @@ export {
   Loader,
   NoLinks,
   MobileIcon,
+  BlueIcon,
+  SecondBlue,
 };
